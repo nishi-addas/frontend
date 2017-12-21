@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+/*
+** リード文
+------------------------------ */
+.lead {
+    font-weight: 600;
+    text-align: justify;
+    color: var(--c-primary);
+    $sizeBase: var(--font-size-base);
+    @include fxlh(18,$sizeBase,32);
+    &.text-center {
+        text-align: center;
+    }
+}
+/*
+** 両先端を尖らせた場合
+------------------------------ */
+.knife-left-right {
+    position: relative;
+    padding: .55555555555556em 1.4444444444444em .55555555555556em 2.3333333333333em;
+    background: color(var(--c-primary) l(95%));
+    margin-left: -.88888888888889em;
+    border-bottom: solid 3px var(--c-primary);
+    z-index: -2;
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 0;
+        border: none;
+        border-left-width: 2.2222222222222em;
+        border-left-style: solid;
+        border-bottom-width: 4.3888888888889em;
+        border-bottom-style: solid;
+        z-index: -1;
+    }
+    &:before {
+        left: -2px;
+        top: -2px;
+        border-left-color: white;
+        border-bottom-color: transparent;
+        
+    }
+    &:after {
+        right: -3px;
+        top: -7px;
+        border-left-color: transparent;
+        border-bottom-color: white;
+    }
+}
+/*
+** タイトル
+------------------------------ */
+.ttl {
+    /*** 両端に線を伸ばす
+    ------------------------------ */
+    &-center-line {
+        padding: 0 55px;
+        &:before, &:after {
+            position: absolute;
+            content: '';
+            top: 50%;
+            display: inline-block;
+            width: 45px;
+            height: 1px;
+            background-color: var(--c-base);
+        }
+        &:before {
+            left: 0;
+        }
+        &:after {
+            right: 0;
+        }
+        &-double {
+            /*** 両端に線を伸ばす 二重線
+            ------------------------------ */
+            &:before, &:after {
+                top: calc( 50% - 1.5px );
+                height: 3px;
+                background-color: transparent;
+                border-top: 1px solid var(--c-base);
+                border-bottom: 1px solid var(--c-base);
+            }
+        }
+    }
+    /*** 下側に小さく線をつける
+    ------------------------------ */
+    &-bdr-btm-short {
+        margin-bottom: 1em;
+        &:before {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: -15px;
+            display: inline-block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--c-base);
+            border-radius: 2px;
+        }
+        &-center {
+            &:before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    /*** スラッシュで囲む
+    ------------------------------ */
+    &-slash {
+        padding: 0 45px;
+        &:before, &:after {
+            position: absolute;
+            content: '';
+            top: 50%;
+            width: 44px;
+            height: 2px;
+            background-color: var(--c-base);
+            transform: rotate(-60deg);
+        }
+        &:before {
+            left: 0;
+        }
+        &:after {
+            right: 0;
+        }
+    }
+    /*** 葉っぱ風
+    ------------------------------ */
+    &-leaf {
+        margin: calc( 5.5555555555556em / 2 ) 0 !important;
+        padding: 10px 0;
+        text-align: center;
+        &:before {
+            position: absolute;
+            content: "";
+            top: 50%;
+            left: 50%;
+            width: 150px;
+            height: 5.5555555555556em;
+            border-radius: 50%;
+            border: 5px solid var(--c-primary);
+            border-left-color: transparent;
+            border-right-color: transparent;
+            transform: translate(-50%, -50%);
+        }
+    }
+}

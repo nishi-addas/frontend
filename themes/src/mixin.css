@@ -1,0 +1,241 @@
+@charset "utf-8";
+
+/*
+** フォントサイズ
+** 使い方・・・@include fx(12);
+------------------------------ */
+@mixin fx($size: 16, $base: 16) {
+    font-size: $(size)px;
+    font-size: calc(($size / $base) * 1rem);
+}
+/*
+** フォントサイズ & ラインハイト
+** 使い方・・・@include fxlh(12,var(--font-size-base),24);
+** $sizeBase: var(--font-size-base); 一度、変数にフォントサイズを代入してその後 Mixin をかける
+** @include fxlh(12,$sizeBase,24);
+------------------------------ */
+@mixin fxlh($size: 16, $base: 16, $lin: 16) {
+    $lh: calc($lin / $size);
+    font-size: $(size)px;
+    font-size: calc(($size / $base) * 1rem);
+    line-height: $lh;
+}
+/*
+** リンクカラー
+** 使い方・・・
+** $linkColor: var(--c-primary); 一度、変数に色番号を代入してその後 Mixin をかける
+** @include link-color( $linkColor );
+------------------------------ */
+@mixin link-color($color) {
+    color: $color;  
+    &:hover, &:active, &:focus {
+        /* color: lighten($color, 20%); */
+        color: color($color lightness(20%) | $color lightness(20%) | $color lightness(20%));
+    }
+}
+/*
+** 連続する .col- に margin-top を設定
+** 使い方・・・@include margin-row-col( 10, sm );
+------------------------------ */
+@mixin margin-row-col($size: var(--m-base), $mq: sm) {
+    & > [class*="col-"] + [class*="col-"] {
+        margin-top: $(size)px;
+    }
+    @if $mq == sm {
+        @media (min-width: 768px) {
+            & > [class*="col-"] + [class*="col-"] {
+                margin-top: 0;
+            }
+        }
+    } @else if $mq == md {
+        @media (min-width: 992px) {
+            & > [class*="col-"] + [class*="col-"] {
+                margin-top: 0;
+            }
+        }
+    }
+}
+/*
+** vertical-rhythm
+** 使い方・・・@include vertical-rhythm( var(--m-base), 80, sm );
+------------------------------ */
+@mixin vertical-rhythm($base: var(--m-base), $mqSize: 80, $mq: sm) {
+    margin-top: var(--m-base);
+    @if $mq == sm {
+        @media (min-width: 768px) {
+            margin-top: $(mqSize)px;
+        }
+    } @else if $mq == md {
+        @media (min-width: 992px) {
+            margin-top: $(mqSize)px;
+        }
+    }
+}
+/*
+** background-size: cover
+** 使い方・・・
+$bg-img-path: '../path/to/image.jpg';
+$bg-options: center no-repeat;
+@include bg-cover( $bg-img-path, $bg-options );
+------------------------------ */
+@mixin bg-cover( $bg-img-path, $bg-options ) {
+    background: url($bg-img-path) $bg-options;
+    background-size: cover;
+}
+/*
+** outer - inner
+** 使い方・・・
+$bg-img-path: '../path/to/image.jpg';
+$width: 4;
+$height: 3;
+@include outer-inner( $bg-img-path, $width, $height );
+------------------------------ */
+@mixin outer-inner( $bg-img-path, $width, $height ) {
+    position: relative;
+    overflow: hidden;
+    /* background: url($bg-img-path) center no-repeat;
+    background-size: cover; */
+    &:before {
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: calc(($height / $width) * 100%);
+        background: url($bg-img-path) center no-repeat;
+        background-size: cover;
+    }
+    & > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+/*
+** 矢印
+** 使い方・・・@include arrow( var(--c-primary), 10, 30% );
+------------------------------ */
+@mixin arrow($color, $size, $position) {
+    position: relative;
+    background: $color; 
+    &:after{
+        bottom: 100%;
+        left: $position;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: $color;
+        border-width: $(size)px;
+        margin-left: -$(size)px;
+    }
+}
+/*
+** 3点リーダー
+** 使い方・・・@include line-clamp(3);
+*/
+@mixin line-clamp($size){
+    display: box;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: $size;
+    -webkit-box-orient: vertical;
+}
+/*
+** 縦横比を維持したブロック
+** 使い方・・・@include aspect-ratio(960, 600, '../example.jpg');
+** 今のところ null をうまく判定できない
+*/
+@mixin aspect-ratio($width, $height, $image: null) {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-top: calc( ($height / $width) * 100% );
+    @if $image != null {
+        background: url($image) 50% 50% no-repeat;
+        background-size: cover;
+    }
+}
+/* body {
+    @include aspect-ratio(960, 600,'');
+} */
+/*
+** box-shadow　→　動く
+** 使い方・・・@include box-shadow(10px, 10px, 0px, 0px, #000);
+*/
+@mixin box-shadow($horizontal: 10px, $vertical: 10px, $blur: 0px, $shadow: 0px, $color: #000000){
+    -webkit-box-shadow: $horizontal $vertical $blur $shadow $color;
+    -moz-box-shadow: $horizontal $vertical $blur $shadow $color;
+    box-shadow: $horizontal $vertical $blur $shadow $color;
+}
+/*
+** 吹き出し　→　動く
+** 使い方・・・@include arrow(#ccc, 10, 30%);
+*/
+@mixin arrow($color, $size, $position) {
+    position: relative;
+    background: $color;
+ 
+    &:after{
+        bottom: 100%;
+        left: $position;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-bottom-color: $color;
+        border-width: $(size)px;
+        margin-left: -$(size)px;
+    }
+}
+/*
+** 角丸＆上下中央＆左右が丸い長方形　→　動く
+** 使い方・・・body { @include rounded(50); }
+*/
+@mixin border-radius($radius) {
+    -webkit-border-radius: $(radius)px;
+       -moz-border-radius: $(radius)px;
+            border-radius: $(radius)px;
+  }
+@mixin middle-line($height){
+    height: $(height)px;
+    line-height: $(height)px;
+}
+@mixin rounded($height, $display: inline-block){
+    $space: calc($height / 2)px;
+    display: $display;
+    padding: 0 $space;
+    @include border-radius($height);
+    @include middle-line($height);
+}
+/*
+** 角丸＆上下中央＆左右が丸い長方形　→　動く
+** 使い方・・・@include rounded(50);
+*/
+
+
+
+
+
+
+/*
+** for文 を使った書き方　→　動く
+** ※mixin ではない
+*/
+/* @for $i from 1 to 3 {
+    .b-$i { width: $(i)px; }
+} */
+
+
+
+
+
+
+
+
+

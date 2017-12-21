@@ -1,0 +1,290 @@
+@charset "utf-8";
+
+/*
+** position: relative
+------------------------------ */
+.pr {
+    position: relative;
+}
+/*
+** display: inline-block
+------------------------------ */
+.disp-i-b {
+    display: inline-block;
+}
+/*
+** 字下げ
+------------------------------ */
+.kome {
+    text-indent: -1em;
+    padding-left: 1em;
+}
+/*
+** 蛍光色
+------------------------------ */
+.neon {
+    background: linear-gradient(transparent 40%, var(--c-yellow) 40%);
+}
+/*
+** スクロール
+------------------------------ */
+.scroll-y {
+    overflow-y: scroll;
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #333;
+    }
+}
+/*
+** 上下に線
+------------------------------ */
+.bdr-top-btm {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: 3px solid var(--c-primary);
+    border-bottom: 3px solid var(--c-primary);
+}
+/*
+** 左に線＋塗り
+------------------------------ */
+.bdr-left-bg-color {
+    padding: 1em;
+    /* text-shadow:1px 1px 1px #fff; */
+    background-color: color(var(--c-primary) l(95%));
+    border-left: 5px solid var(--c-primary);
+}
+/*
+** 吹き出し
+------------------------------ */
+.fukidashi {
+    padding: 1em;
+    background-color: color(var(--c-primary) l(95%));
+    &:after {
+        position: absolute;
+        content: '';
+        border: 15px solid transparent;
+        width: 0;
+        height: 0;
+    }
+    &-top {
+        &:after {
+            top: -30px;
+            left: 1em;
+            border-bottom: 15px solid color(var(--c-primary) l(95%));
+        }
+    }
+    &-right {
+        &:after {
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            border-left: 15px solid color(var(--c-primary) l(95%));
+        }
+    }
+    &-btm {
+        &:after {
+            top: 100%;
+            left: 1em;
+            border-top: 15px solid color(var(--c-primary) l(95%));
+        }
+    }
+    &-left {
+        &:after {
+            top: 50%;
+            right: 100%;
+            transform: translateY(-50%);
+            border-right: 15px solid color(var(--c-primary) l(95%));
+        }
+    }
+}
+/*
+** 線先に矢印
+------------------------------ */
+.yajirushi {
+    &:before,
+    &:after {
+        position: absolute;
+        content: '';
+        bottom: -3px;
+    }
+    &:before {
+        width: 0;
+        height: 0;
+        border-bottom: .83333333333333em solid var(--c-primary);
+    }
+    &:after {
+        width: 100%;
+        border-bottom: 3px solid var(--c-primary);
+    }
+    &-left {
+        padding-left: 1.2222222222222em;
+        &:before {
+            left: 0;
+            border-left: .83333333333333em solid transparent;
+        }
+        &:after {
+            left: 10px;
+        }
+    }
+    &-right {
+        padding-right: 1.2222222222222em;
+        &:before {
+            right: 0;
+            border-right: .83333333333333em solid transparent;
+        }
+        &:after {
+            right: 10px;
+        }
+    }
+}
+/*
+** 先端が尖ったようなバー
+------------------------------ */
+.knife {
+    background: color(var(--c-primary) l(95%));
+    z-index: -1;
+    &:before {
+        position: absolute;
+        content: '';
+        top: -2px;
+        border: none;
+        border-bottom: solid 4.3888888888889em transparent;
+        z-index: -2;
+    }
+    &-left {
+        margin-left: -.88888888888889em;
+        padding: .5em .75em .5em 2.3333333333333em;
+        &:before {
+            left: -2px;
+            border-left: 2.2222222222222em solid white;
+        }
+    }
+    &-right {
+        margin-right: -.88888888888889em;
+        padding: .5em 2.3333333333333em .5em .75em;
+        &:before {
+            right: -2px;
+            border-right: 2.2222222222222em solid white;
+        }
+    }
+}
+/*
+** カギカッコ
+------------------------------ */
+.kagikakko {
+    padding: 1em;
+    &:before, &:after { 
+        position: absolute;
+        content:'';
+        display: inline-block;
+        width: 20px;
+        height: 30px;
+    }
+    &:before {
+        top: 0;
+        left: 0;
+        border-left: 1px solid var(--c-base);
+        border-top: 1px solid var(--c-base);
+    }
+    &:after {
+        bottom: 0;
+        right: 0;
+        border-bottom: 1px solid var(--c-base);
+        border-right: 1px solid var(--c-base);
+    }
+}
+/*
+** ブラケット
+------------------------------ */
+.bracket {
+    padding: .5em 1em;
+    top: 0;
+    &:before, &:after { 
+        position: absolute;
+        content:'';
+        top: 0;
+        display: inline-block;
+        width: 8px;
+        height: 100%;
+        border-top: 1px solid var(--c-base);
+        border-bottom: 1px solid var(--c-base);
+    }
+    &:before {
+        left: 0;
+        border-left: 1px solid var(--c-base);
+    }
+    &:after {
+        right: 0;
+        border-right: 1px solid var(--c-base);
+    }
+}
+/*
+** アイコン
+------------------------------ */
+.icon {
+    padding-left: 1.2em;
+    &[class*=bg-] {
+        padding: .5em .5em .5em 1.8em;
+        &:before {
+            top: 50%;
+            left: .5em;
+            transform: translateY(-50%);
+        }
+    }
+    &:before {
+        position: absolute;
+        content: '';
+        font-family: Fontawesome;
+        font-weight: normal;
+        top: 0;
+        left: 0;
+        color: var(--c-primary);
+    }
+    &-box[class*=bg-] {
+        padding: .5em;
+        border-left: 2.2em solid var(--c-primary);
+        &:before {
+            left: -1.5em;
+            color: #fff;
+        }
+    }
+    &-check:before {
+        content: "\f00c";
+    }
+    &-check-square:before {
+        content: "\f14a";
+    }
+    &-pencil:before {
+        content: "\f040";
+    }
+}
+/*
+** タブ
+------------------------------ */
+.box-column {
+    position: relative;
+    padding: 1em;
+    background-color: color(var(--c-primary) l(95%));
+    border: 3px solid var(--c-primary);
+    & .ttl-box-column:after {
+        position: absolute;
+        content: attr(data-column);
+        left: -3px;
+        /* bottom: calc( 100% + 3px ); */
+        bottom: 100%;
+        padding: .75em 1.25em;
+        font-size: .75em;
+        font-family: Fontawesome, Lato,Verdana,"游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+        border-radius: 5px 5px 0 0;
+        background-color: var(--c-primary);
+        color: #fff;
+        line-height: 1;
+    }
+}

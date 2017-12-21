@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+div > *:first-child,
+h1 > *:first-child,
+h2 > *:first-child,
+h3 > *:first-child,
+h4 > *:first-child,
+h5 > *:first-child,
+h6 > *:first-child,
+p > *:first-child,
+li > *:first-child,
+dd > *:first-child,
+th > *:first-child,
+td > *:first-child,
+article > *:first-child {
+    margin-top: 0;
+}
+
+div > *:last-child,
+h1 > *:last-child,
+h2 > *:last-child,
+h3 > *:last-child,
+h4 > *:last-child,
+h5 > *:last-child,
+h6 > *:last-child,
+p > *:last-child,
+li > *:last-child,
+dd > *:last-child,
+th > *:last-child,
+td > *:last-child,
+article > *:last-child {
+    margin-bottom: 0;
+}
+
+/*
+** 連続する article に margin-top を設定
+**
+------------------------------ */
+article + article {
+    margin-top: var(--m-base);
+}
+
+/*
+** 連続する .col- に margin-top を設定
+** 例）class="row mt-row-sm-10-0"
+------------------------------ */
+.row.mt-row-sm-10-0 {
+    @include margin-row-col( 10, md );
+}
+
+/*
+** vertical-rhythm
+** 例）class="vr-base-sm"
+------------------------------ */
+.vr-base-sm > * + * {
+    @include vertical-rhythm( 40, 80, sm );
+}
+.vr-base-md > * + * {
+    @include vertical-rhythm( 40, 80, md );
+}

@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+.table {
+    margin-bottom: 0;
+    @include fx(14);
+    /* border-bottom: 1px solid var(--bg-default); */
+    border-bottom: 1px solid #ddd;
+    & + * {
+        margin-top: 1em;
+    }
+    & > thead > tr > th,
+    & > tbody > tr > th,
+    & > tfoot > tr > th,
+    & > thead > tr > td,
+    & > tbody > tr > td,
+    & > tfoot > tr > td {
+        vertical-align: middle;
+    }
+    & > tbody > tr > th {
+        width: 30%;
+    }
+    &.tbl-2column {
+        border-bottom: none;
+        & > tbody > tr,
+        & > tbody > tr > th,
+        & > tbody > tr > td {
+            display: block;
+            width: 100%;
+        }
+        & > tbody > tr {
+            border: 1px solid #ddd;
+        }
+        & > tbody > tr + tr {
+            margin-top: 1.1428571428571em;
+        }
+        & > tbody > tr > th {
+            border-top: none;
+        }
+        & > tbody > tr > td {
+            & .form-control {
+                border-radius: 0;
+            }
+            & input[type=text],
+            & input[type=email],
+            & input[type=number],
+            & select {
+                height: 54px;
+            }
+            & .mwform-tel-field input[type=text],
+            &#zip input[type=text] {
+                display: inline-block;
+                width: 4.825em;
+            }
+        }
+    }
+    &.tbl-thead-none {
+        & > thead {
+            display: none;
+        }
+        & > tbody > tr,
+        & > tbody > tr > th,
+        & > tbody > tr > td {
+            display: block;
+        }
+        & > tbody > tr > th,
+        & > tbody > tr > td {
+            position: relative;
+            padding-top: 52px;
+            border-top: none;
+            &::before {
+                position: absolute;
+                content: attr(area-label);
+                display: block;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px 8px;
+                background-color: #ddd;
+                font-weight: 600;
+            }
+        }
+        & > tbody > tr {
+            border: 1px solid #ddd;
+            & + tr {
+                margin-top: 1.1428571428571em;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .table {
+        & > thead > tr > th,
+        & > tbody > tr > th,
+        & > tbody > tr > td {
+            padding: 1.1428571428571em;
+        }
+        &.tbl-thead-none {
+            & > thead {
+                display: table-header-group;
+            }
+            & > tbody > tr {
+                display: table-row;
+                border: none;
+                & + tr {
+                    margin-top: 0;
+                }
+            }
+            & > tbody > tr > th,
+            & > tbody > tr > td {
+                display: table-cell;
+            }
+            & > tbody > tr > th,
+            & > tbody > tr > td {
+                padding-top: 1.1428571428571em;
+                border-top: 1px solid #ddd;
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+    .table.tbl-2column {
+        border-bottom: 1px solid #ddd;
+        & > tbody > tr {
+            display: table-row;
+            border: none;
+            & + tr {
+                margin-top: 0;
+            }
+            & > th,
+            & > td {
+                display: table-cell;
+            }
+            & > th {
+                position: relative;
+                width: 30%;
+                border-top: 1px solid #ddd;
+            }
+            & > td {
+                padding: 1.1428571428571em;
+            }
+        }
+        &.tbl-contact {
+            border-bottom: none;
+            & > tbody > tr > th,
+            & > tbody > tr > td {
+                border-top: none;
+            }
+            & > tbody > tr > th {
+                padding-left: 1em;
+                &::before {
+                    position: absolute;
+                    content: '';
+                    top: 20%;
+                    left: 0;
+                    width: 4px;
+                    height: 60%;
+                    background-color: var(--c-primary);
+                    border-radius: 2px;
+                }
+            }
+            & > tbody > tr > td {
+                & > .checkbox {
+                    display: inline-block;
+                    margin-bottom: 0;
+                }
+                & .mwform-tel-field input[type=text],
+                &#zip input[type=text] {
+                    width: 6em;
+                }
+            }
+        }
+    }
+}

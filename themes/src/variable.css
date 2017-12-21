@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+:root {
+	--font-size-base: 16;
+	--line-height: 1.8;
+	--c-base: #000;
+	--c-primary: #0074bf;
+	--c-success: #56a764;
+	--c-info: #f2cf01;
+	--c-warning: #de9610;
+	--c-danger: #c93a40;
+	--c-yellow: #fff001;
+	--c-pink: #cc528b;
+	--c-white: #fff;
+	--c-accent: #c93a40;
+	--bg-default: #f5f5f5;
+	--m-base: 40px;
+}

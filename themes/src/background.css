@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+/*
+** 背景 background-primary の略
+------------------------------ */
+.bg-p {
+    background-color: var(--c-primary);
+}
+    /*** 背景 background-primary-light の略 ***/
+    .bg-p-l {
+        background-color: color(var(--c-primary) l(95%));
+    }
+
+/*
+** 背景 background-success の略
+------------------------------ */
+.bg-s {
+    background-color: var(--c-success);
+}
+
+/*
+** 背景 background-info の略
+------------------------------ */
+.bg-i {
+    background-color: var(--c-info);
+}
+
+/*
+** 背景 background-warning の略
+------------------------------ */
+.bg-w {
+    background-color: var(--c-warning);
+}
+
+/*
+** 背景 background-danger の略
+------------------------------ */
+.bg-d {
+    background-color: var(--c-danger);
+}
+
+/*
+** 背景 background-default
+------------------------------ */
+.bg-default {
+    background-color: var(--bg-default);
+}
+
+/*
+** 背景 background-white
+------------------------------ */
+.bg-white {
+    background-color: #fff;
+}
+
+/*
+** 背景 background-yellow
+------------------------------ */
+.bg-yellow {
+    background-color: var(--c-yellow);
+}
+
+/*
+** 背景 background-pink
+------------------------------ */
+.bg-pink {
+    background-color: var(--c-pink);
+}
+
+/*
+** 背景 background-accent
+------------------------------ */
+.bg-accent {
+    background-color: var(--c-accent);
+}
+
+/*
+** セクションの背景
+------------------------------ */
+.bg-sec {
+    & + * {}
+    & + .l-sec {}
+    & + .l-sec.bg-sec {}
+}
+
+/*
+** セクションの背景画像
+------------------------------ */
+.bg-sec {
+    & + * {}
+    & + .l-sec {}
+    & + .l-sec.bg-sec {}
+}
+
+/*
+** 背景画像を透過させるための div
+------------------------------ */
+.bg-touka {
+    background: rgba(255, 255, 255, .7);
+}
+.l-sec {
+    & > .bg-touka {
+        margin-top: -var(--m-base);
+        margin-bottom: -var(--m-base);
+        padding-top: var(--m-base);
+        padding-bottom: var(--m-base);
+    }
+}
+@media (min-width: 992px) {
+    .l-sec {
+        & > .bg-touka {
+            margin-top: calc( -var(--m-base) * 2 );
+            margin-bottom: calc( -var(--m-base) * 2 );
+            padding-top: calc( var(--m-base) * 2 );
+            padding-bottom: calc( var(--m-base) * 2 );
+        }
+    }
+}
+
+/* .bg-img {
+    $bg-img-path: '../img/bg-750x530.jpg';
+    $bg-options: center no-repeat;
+    @include bg-cover( $bg-img-path, $bg-options );
+    &-h-zoom {
+        overflow: hidden;
+        transform : scale(1);
+        transition: all .3s;
+        &:hover {
+            transform : scale(1.1);
+        }
+    }
+} */
+/* .bg-img {
+    overflow: hidden;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        transition: all .3s;
+        $bg-img-path: '../img/bg-750x530.jpg';
+        $bg-options: center no-repeat;
+        @include bg-cover( $bg-img-path, $bg-options );
+    }
+    &:hover:before {
+        transform: scale(1.1);
+    }
+} */
+.bg-img-zoom {
+    &:before {
+        transition: all .3s;
+    }
+    &:hover {
+        &:before {
+            transform: scale(1.1);
+        }
+    }
+}
+
+/*
+** 背景画像 Mixin bg-cover
+------------------------------ */
+/* .bg-cover {
+    $bg-img-path: '../path/to/image.jpg';
+    $bg-options: center no-repeat;
+    @include bg-cover( $bg-img-path, $bg-options );
+} */
+/*
+** 背景をストライプで塗る
+------------------------------ */
+.bg-stripe {
+    padding: .5em .75em;
+    text-shadow: 0 0 5px white;
+    background: -webkit-repeating-linear-gradient(-45deg, color(var(--c-primary) l(85%)), color(var(--c-primary) l(85%)) 3px,color(var(--c-primary) l(95%)) 3px, color(var(--c-primary) l(95%)) 7px);
+    background: repeating-linear-gradient(-45deg, color(var(--c-primary) l(85%)), color(var(--c-primary) l(85%)) 3px,color(var(--c-primary) l(95%)) 3px, color(var(--c-primary) l(95%)) 7px);
+    &-top-btm {
+        border-top: 2px solid var(--c-primary);
+        border-bottom: 2px solid var(--c-primary);
+    }
+    &-bdr-all {
+        border: 2px solid var(--c-primary);
+    }
+}

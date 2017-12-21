@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/*
+** about.html
+------------------------------ */
+#about {
+    & #contents-01 {
+        $bg-img-path: '../img/bg-750x530.jpg';
+        $bg-options: center no-repeat;
+        @include bg-cover( $bg-img-path, $bg-options );
+    }
+    & #img-about-01 {
+        $bg-img-path: '../img/960x960.png';
+        @include outer-inner( $bg-img-path, 960, 960 );
+    }
+    & #img-about-02 {
+        $bg-img-path: '../img/960x960.png';
+        @include outer-inner( $bg-img-path, 960, 960 );
+    }
+    & #img-about-03 {
+        $bg-img-path: '../img/bg-1600x1130.jpg';
+        $width: 428;
+        $height: 556;
+        @include outer-inner( $bg-img-path, $width, $height );
+    }
+    & #img-about-04 {
+        $bg-img-path: '../img/bg-1600x1130.jpg';
+        $width: 321;
+        $height: 256;
+        @include outer-inner( $bg-img-path, $width, $height );
+    }
+    & #img-about-05 {
+        $bg-img-path: '../img/bg-1600x1130.jpg';
+        $width: 321;
+        $height: 256;
+        @include outer-inner( $bg-img-path, $width, $height );
+    }
+    & #img-about-06 {
+        $bg-img-path: '../img/bg-1600x1130.jpg';
+        $width: 321;
+        $height: 256;
+        @include outer-inner( $bg-img-path, $width, $height );
+    }
+    & #img-about-07 {
+        $bg-img-path: '../img/bg-1600x1130.jpg';
+        $width: 321;
+        $height: 256;
+        @include outer-inner( $bg-img-path, $width, $height );
+    }
+}
+@media (min-width: 768px) {
+    #about {
+        & #about-flex-contents-01 {
+            justify-content: space-between;
+        }
+        & #img-about-03 {
+            width: calc( 38.42105263157895% - 10px );
+            & + .flex-column-sm {
+                width: calc( ( 100% - 38.42105263157895% ) - 10px );
+                & > .flex-row-sm {
+                    justify-content: space-between;
+                }
+                & > .item.flex-row-sm + .item.flex-row-sm {
+                    margin-top: 20px;
+                }
+                & > .item > .item {
+                    width: calc( 50% - 10px );
+                }
+            }
+        }
+    }
+}

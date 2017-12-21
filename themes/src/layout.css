@@ -1,0 +1,435 @@
+@charset "utf-8";
+
+/*
+** body 直下に記述 WordPress が左右にグラグラしないようになる
+------------------------------ */
+#l-wrapper {
+    overflow: hidden
+}
+/*
+** Loading
+------------------------------ */
+.l-loader {
+    position: fixed;
+    background: var(--c-base);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 9998;
+    & .loader {
+        position: absolute;
+        border-left: 2px solid #fff;
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        border-right: 2px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        height: 46px;
+        width: 46px;
+        left: 50%;
+        top: 50%;
+        margin: -23px 0 0 -23px;
+        text-indent: -9999em;
+        font-size: 10px;
+        z-index: 9999;
+        animation: load .8s infinite linear;
+        &:after {
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+        }
+    }
+}
+@-webkit-keyframes load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+/*
+** ヘッダー
+------------------------------ */
+#l-header {
+    min-height: 50px;
+    & .navbar-brand {
+        margin-top: 5px;
+        margin-left: 5px;
+        width: 180px;
+        height: 40px;
+        text-indent: -9999em;
+        background: url(../img/logo.svg) left center no-repeat;
+        background-size: contain;
+    }
+}
+@media (min-width: 992px) {
+    #l-header {
+        min-height: 84px;
+        &.is-small {
+            min-height: 50px;
+            & .navbar-brand {
+                margin-top: 5px;
+                margin-left: 5px;
+                height: 40px;
+            }
+        }
+    }
+}
+/*
+** ページタイトル
+------------------------------ */
+#l-page {
+    padding: 1.25em 0;
+    background-color: var(--bg-default);
+    /* background: url(../img/pagetitle/bg-sakurajima.jpg) center no-repeat;
+    background-size: cover; */
+    & .ttl-page {
+        @include fx(16);
+        text-align: center;
+        & .txt-en {
+            display: block;
+            @include fx(14);
+        }
+        & .txt-ja {
+            display: block;
+            @include fx(14);
+        }
+    }
+}
+@media (min-width: 768px) {
+    #l-page {
+        & .ttl-page {
+            @include fx(24);
+            & .txt-en {
+                @include fx(18);
+            }
+            & .txt-ja {
+                @include fx(18);
+            }
+        }
+    }
+}
+@media (min-width: 992px) {
+    #l-page {
+        padding: 2.5em 0;
+        & .ttl-page {
+            line-height: 1.8;
+        }
+    }
+}
+/*
+** パンくず
+------------------------------ */
+#l-breadcrumb {
+    /* background-color: rgba(6, 180, 239, .05); */
+    & .breadcrumb {
+        padding: 15px 0;
+        /* text-align: right; */
+        background-color: transparent;
+        & li {
+            @include fx(11);
+            & + li:before {
+                padding: 0 5px 0 0;
+                content: '\f105';
+                font-family: 'Fontawesome';
+            }
+            & a {
+                display: inline-block;
+                color: var(--c-primary);
+                letter-spacing: 0;
+            }
+        }
+    }
+}
+@media (min-width: 992px) {
+    #l-breadcrumb {
+        & .breadcrumb {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            & li {
+                @include fx(14);
+            }
+        }
+    }
+}
+/*
+** メインとサイドを包括するエリア
+------------------------------ */
+#l-wrap-main-side {}
+/*
+** メイン
+------------------------------ */
+#l-main {}
+/*
+** サイド
+------------------------------ */
+#l-side {
+    margin-top: var(--m-base);
+    /* padding: 20px 25px;
+    border: 1px solid var(--c-primary); */
+    & .side-box {
+        & + .side-box {
+            margin-top: calc( var(--m-base) / 2 );
+        }
+        & .ttl-side-box {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: var(--c-primary);
+        }
+        & .list-group {
+            list-style: none;
+            & > li > a {
+                padding: 5px 15px 5px 0;
+                font-size: 14px;
+                background-color: transparent;
+                border: none;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    #l-side {
+        margin-top: 0;
+    }
+}
+/*
+** フッター
+------------------------------ */
+#l-footer {
+    & .copy {
+        $bgColor: var(--c-primary);
+        background-color: color($bgColor blackness(20%) | $bgColor blackness(20%) | $bgColor blackness(20%));
+        color: #fff;
+        & > * {
+            text-align: center;
+            @include fxlh(12,16,44);
+        }
+    }
+}
+@media (min-width: 768px) {
+    #l-footer {
+    }
+}
+/*
+** 基本的な囲み枠 layout-section の略
+------------------------------ */
+.l-sec {
+    padding-top: var(--m-base);
+    padding-bottom: var(--m-base);
+    & + .l-sec {}
+    & .l-sec-header {}
+    & .l-sec-contents {
+        padding-top: var(--m-base);
+        padding-bottom: var(--m-base);
+        & .ttl-l-sec-contents {
+            color: var(--c-primary);
+            text-align: justify;
+            letter-spacing: .2em;
+            $sizeBase: var(--font-size-base);
+            @include fxlh(18,$sizeBase,36);
+        }
+    }
+    & .l-sec-footer {}
+    & .ttl-l-sec {
+        position: relative;
+        margin-bottom: 2em;
+        color: var(--c-primary);
+        letter-spacing: .2em;
+        $sizeBase: var(--font-size-base);
+        @include fxlh(18,$sizeBase,32);
+        & .txt-ja,
+        & .txt-en {
+            display: block;
+            @include fx(14);
+            color: color(var(--c-base) l(20%));
+        }
+        & > small {
+            display: block;
+            color: inherit;
+            @include fx(14);
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            bottom: -14px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background-color: color(var(--c-base) l(90%));
+            border-radius: 2px;
+        }
+        &.text-center::before {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &.ttl-l-lg {
+            padding: 20px 0 40px;
+            &::before {
+                bottom: 20px;
+            }
+        }
+    }
+}
+@media (min-width: 768px) {
+    .l-sec {
+        & + .l-sec {}
+        & .l-sec-header {
+            & .ttl-l-sec {
+                $sizeBase: var(--font-size-base);
+                @include fxlh(24,$sizeBase,48);
+            }
+        }
+        & .l-sec-contents {}
+        & .l-sec-footer {}
+        /*** 自由な配置 ***/
+        &.l-sec-free {
+            padding-top: calc(var(--m-base) * 2);
+            padding-bottom: calc(var(--m-base) * 2);
+            & > .container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                & .l-sec-header,
+                & .l-sec-contents {
+                    width: 50%;
+                }
+                & .l-sec-header {
+                    transform: translateY(-var(--m-base));
+                }
+                & .l-sec-contents {
+                    padding-left: var(--m-base);
+                    padding-right: var(--m-base);
+                    background-color: color(var(--c-base) l(90%));
+                    transform: translateX(-var(--m-base));
+                }
+            }
+            &.l-sec-contents-img > .container {
+                flex-direction: row-reverse;
+                & .l-sec-contents {
+                    transform: translateX(var(--m-base));
+                }
+            }
+            &.invert > .container {
+                & .l-sec-header {
+                    transform: translateY(0);
+                }
+                & .l-sec-contents {
+                    transform: translate(-var(--m-base), -var(--m-base));
+                }
+            }
+            &.invert.l-sec-contents-img > .container {
+                & .l-sec-contents {
+                    transform: translate(var(--m-base), -var(--m-base));
+                }
+            }
+        }
+    }
+}
+@media (min-width: 992px) {
+    .l-sec {
+        padding-top: calc( var(--m-base) * 2 );
+        padding-bottom: calc( var(--m-base) * 2 );
+        & + .l-sec {}
+        & .l-sec-header {}
+        & .l-sec-contents {}
+        & .l-sec-footer {}
+        /*** 横並び ***/
+        &.l-sec-line {
+            padding-bottom: calc(var(--m-base) * 2);
+            & > .container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                & .l-sec-header,
+                & .l-sec-contents {
+                    width: 50%;
+                }
+                & .l-sec-header {
+                    & .ttl-l-sec {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+/*
+** カードデザイン
+------------------------------ */
+.l-card {
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    & .l-card-header {
+        border-radius: 2px 2px 0 0;
+        &.outer {
+            @include outer-inner( '../img/dammy.png', 768, 480 );
+        }
+    }
+    & .l-card-contents {
+        padding: 25px 25px 15px;
+        & .ttl-l-card-contents {
+            margin-bottom: 22px;
+        }
+    }
+    &.l-card-circle {
+        border-radius: 0;
+        box-shadow: none;
+        & .l-card-header {
+            border-radius: 50%;
+            &:before {
+                padding-top: 100%;
+            }
+        }
+    }
+}
+/*
+** ボタン
+------------------------------ */
+.l-btn {}
+@media (min-width: 768px) {
+    .l-btn {}
+}
+@media (min-width: 992px) {
+    .l-btn {}
+}
+/*
+** ページナビ
+------------------------------ */
+.l-pagenavi {
+    margin-top: calc( var(--m-base) / 2 );
+    text-align: center;
+    & .pagination > li > a,
+    & .pagination > li > span {
+        border-color: var(--c-primary);
+    }
+}
+@media (min-width: 768px) {
+    .l-pagenavi {
+        & .pagination {}
+    }
+}
+@media (min-width: 992px) {
+    .l-pagenavi {
+        & .pagination {}
+    }
+}
+/*
+** アウター → インナー
+------------------------------ */
+/* .outer {
+    @include outer-inner( ../img/image.jpg, 400, 300 );
+} */

@@ -1,0 +1,184 @@
+@charset "utf-8";
+
+/*
+** button
+------------------------------ */
+.btn {
+    padding: .75em 1.5em;
+    font-weight: 500;
+    border-radius: 0;
+    &.btn-primary {
+        background-color: var(--c-primary);
+        border-color: var(--c-primary);
+        &:hover,
+        &:focus {
+            $color: var(--c-primary);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-success {
+        background-color: var(--c-success);
+        border-color: var(--c-success);
+        &:hover,
+        &:focus {
+            $color: var(--c-success);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-info {
+        background-color: var(--c-info);
+        border-color: var(--c-info);
+        &:hover,
+        &:focus {
+            $color: var(--c-info);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-warning {
+        background-color: var(--c-warning);
+        border-color: var(--c-warning);
+        &:hover,
+        &:focus {
+            $color: var(--c-warning);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-danger {
+        background-color: var(--c-danger);
+        border-color: var(--c-danger);
+        &:hover,
+        &:focus {
+            $color: var(--c-danger);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-yellow {
+        color: #fff;
+        background-color: var(--c-yellow);
+        border-color: var(--c-yellow);
+        &:hover,
+        &:focus {
+            $color: var(--c-yellow);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-pink {
+        color: #fff;
+        background-color: var(--c-pink);
+        border-color: var(--c-pink);
+        &:hover,
+        &:focus {
+            $color: var(--c-pink);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-accent {
+        color: #fff;
+        background-color: var(--c-accent);
+        border-color: var(--c-accent);
+        &:hover,
+        &:focus {
+            $color: var(--c-accent);
+            background-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+            border-color: color($color lightness(45%) | $color lightness(45%) | $color lightness(45%));
+        }
+    }
+    &.btn-white {
+        color: var(--c-base);
+        background-color: var(--c-white);
+        border-color: var(--c-base);
+        &:hover,
+        &:focus {
+            $color: var(--c-white);
+            background-color: color($color lightness(95%) | $color lightness(95%) | $color lightness(95%));
+            border-color: color($color lightness(95%) | $color lightness(95%) | $color lightness(95%));
+        }
+    }
+    &.btn-ghost {
+        background-color: transparent;
+        &.btn-default {
+            color: #777;
+            &:hover {
+                color: #fff;
+                background-color: #777;
+            }
+        }
+        &.btn-primary {
+            color: var(--c-primary);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-success {
+            color: var(--c-success);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-info {
+            color: var(--c-info);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-warning {
+            color: var(--c-warning);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-danger {
+            color: var(--c-danger);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-yellow {
+            color: var(--c-yellow);
+            border: 1px solid var(--c-yellow);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-pink {
+            color: var(--c-pink);
+            border: 1px solid var(--c-pink);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-accent {
+            color: var(--c-accent);
+            border: 1px solid var(--c-accent);
+            &:hover,
+            &:focus {
+                color: #fff;
+            }
+        }
+        &.btn-white {
+            color: #fff;
+            border: 1px solid #fff;
+            &:hover {
+                color: var(--c-base);
+                background-color: #fff;
+            }
+        }
+    }
+    &.btn-round {
+        border-radius: calc( 3.375em / 2 );
+    }
+}

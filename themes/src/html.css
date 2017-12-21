@@ -1,0 +1,118 @@
+@charset "utf-8";
+
+html {
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: var(--font-size-base)px;
+    font-feature-settings : "palt" 1;
+    color: var(--c-base);
+}
+
+body {
+    letter-spacing: .075em;
+    font-size: var(--font-size-base)px;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Yu Gothic", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif; */
+    font-weight: 500;
+    font-feature-settings : "palt" 1;
+    color: var(--c-base);
+    line-height: var(--line-height);
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+a img {
+    outline: none
+}
+
+a {
+    position: relative;
+    display: block;
+    transition: .3s;
+    $linkColor: var(--c-primary); /*** 一度、変数に色番号を代入してその後 Mixin をかける ***/
+    @include link-color( $linkColor );
+    &.d-inline {
+        display: inline;
+    }
+    &.d-inline-block {
+        display: inline-block;
+    }
+    &.link-cover {
+        position: absolute;
+        content: '';
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        text-indent: -9999em;
+    }
+}
+
+a img {
+    border: none;
+    -webkit-transition: opacity .3s, -webkit-transform .3s;
+    transition: opacity .3s, transform .3s;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width/***/: auto;
+    vertical-align: middle;
+}
+
+th,
+td {
+    position: relative;
+    vertical-align: middle;
+}
+
+figure {
+    margin-bottom: 10px;
+    & figcaption {
+        margin-top: 1em;
+        @include fx(14);
+    }
+}
+
+ul,
+ol {
+    padding-left: 1.5714285714286em;
+}
+
+li,
+dd {
+    position: relative;
+}
+
+dd {
+    /* padding-left: 1em; */
+}
+
+caption {
+    @include fx(16);
+    font-weight: 600;
+    color: var(--c-base);
+}
+
+/*
+** 記事
+------------------------------ */
+article {
+    /* padding: 15px;
+    border: 1px solid var(--c-primary); */
+    & .meta-article {
+        color: #555;
+        @include fxlh(12,16,44);
+        & .date-article {}
+        & .category-article {}
+    }
+    & .contents-article {}
+}
+@media (min-width: 992px) {
+    article {
+        /* padding: 30px 50px; */
+    }
+}
